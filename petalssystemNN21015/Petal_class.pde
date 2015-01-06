@@ -12,8 +12,10 @@ class  petal {
     petal= loadImage ("petal.png");                                      //create image for individual petals
   }
 
-  void create () {
+  void create () {pushMatrix();
     image(petal, loc.x, loc.y, petal.width, petal.height);                //displays the image at a location with a size
+    
+    popMatrix();
   }
 
   void move () {                                                          //allow each petal to move
