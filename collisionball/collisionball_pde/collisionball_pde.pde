@@ -1,17 +1,19 @@
-int thing=15;
+int thing=100, minDiam= 15, maxDiam=50;
 PVector[]v= new PVector[thing];
 PVector[]loc= new PVector[thing];
 PVector[]a= new PVector[thing];
 float[]sz= new float[thing];
+PVector[]mass= new PVector[thing];
 
 void setup () {
-  size (500, 500);
+  size (displayWidth, displayHeight);
   colorMode (HSB, 360, 100, 100, 100);
   for (int i=0; i<thing; i++) {
     loc[i]=new PVector (random(width), random(height));
     v[i]= PVector.random2D();
     a[i]=new PVector (0, 0);
     sz[i]=random(5, 40);
+     // mass[i]=map(sz[i], minDiam, maxDiam, 0.1, 1.5);
   }
 }
 
@@ -51,5 +53,7 @@ void draw () {
       v[i].y*=-1;
     }
   }
+//   v[i].normalize();
+   //v[i].div(mass[i]);
 }
 
