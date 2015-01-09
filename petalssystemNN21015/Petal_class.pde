@@ -1,7 +1,7 @@
                                                                           //creating petal class.
 class  petal { 
   PVector v, loc, a;                                                      //Create values that control movement
-  float speed;
+  float theta;                                                            //theta controls angle of the petal
   PImage petal;                                                           // Create image for picture
 
 
@@ -9,12 +9,15 @@ class  petal {
     v= new PVector(random(3, 5), random(-5, -2));                         //initialize velocity so that v.y is negative and v.x is positive
     loc=new PVector(width/2-100,height/2-50);                             //initialize location at center of flower.
     a= new PVector ();                                                    //initialize acceleration
-    petal= loadImage ("petal.png");                                      //create image for individual petals
+    theta= random(PI, 3*PI/2);                                           //Initialize theta so that angle is towards top right corner
+    petal= loadImage ("petal.png");                                       //create image for individual petals
   }
 
   void create () {pushMatrix();
-    image(petal, loc.x, loc.y, petal.width, petal.height);                //displays the image at a location with a size
-    
+    pushMatrix();
+    translate(loc.x, loc.y);                                              //Makes the petals move
+    rotate(theta);                                                        //rotates it by angle theta
+    image(petal, 0, 0, petal.width, petal.height);                        //displays the image at a location with a size
     popMatrix();
   }
 
