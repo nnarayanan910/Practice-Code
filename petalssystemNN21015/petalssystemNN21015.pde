@@ -2,16 +2,16 @@ PImage grass, flower;                                         //Image for backgr
 ArrayList <petal> Petals= new ArrayList <petal>();            //Initialize array list of petals. Note that Petals refers to the system while petal is the class.
 
 void setup () {
-  size (displayWidth, displayHeight);                         //set size of program
   grass=loadImage("grass.jpg");                               //load grass background
+  size (grass.width,grass.height);                           //set size of program
+  imageMode(CENTER);                                           //Center images
   flower=loadImage("daisy-flower.png");                       //load flower
   noCursor();
 }
 
 void draw () {
-  background (0);
-  image(grass, 0, 0, displayWidth, displayHeight);
-  image(flower, 0, 0, displayWidth, displayHeight);           //creating flower background
+  background (grass);
+  image(flower, width/2, height/2, width,height);              //creating flower background
   if (mousePressed) {                                         //generating new petals with a random velocity as defined in class if mouse is pressed
     Petals.add(new petal());
   }
